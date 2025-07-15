@@ -1,1 +1,3 @@
 python-telegram-bot==21
+flask
+gunicorn  # (по избор, но е удобен за Render)
