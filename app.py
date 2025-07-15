@@ -160,8 +160,7 @@ app = FastAPI()
 
 @app.on_event("startup")
 async def on_startup():
-    # Инициализация, ако е нужна
-    pass
+    await telegram_app.initialize()   # <--- ТУК добави инициализацията
 
 @app.post("/webhook")
 async def telegram_webhook(request: Request):
@@ -171,6 +170,7 @@ async def telegram_webhook(request: Request):
     return {"ok": True}
 
 # --- Run only locally with polling (optional) ---
+
 if __name__ == "__main__":
     print("Започва polling (само за локално ползване)")
     telegram_app.run_polling()
